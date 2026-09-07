@@ -10,6 +10,8 @@ required to run the tests.
 - AES encryption / decryption for sensitive financial fields
 - MyBatis encrypted BigDecimal type handler
 - JWT token generation, validation, expiry and tamper detection
+- JWT authentication filter request handling
+- Spring Security user loading rules for enabled/disabled/unknown accounts
 - Current-user helpers backed by Spring Security context
 - User registration, login, password reset and password update rules
 - Evaluation score authorization rules (self, manager and peer flows)
