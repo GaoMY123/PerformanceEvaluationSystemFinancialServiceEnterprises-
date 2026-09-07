@@ -98,6 +98,30 @@ class EvaluationTaskServiceImplTest {
         assertThrows(BusinessException.class, () -> service.submitScore(dto(10L, "PEER")));
     }
 
+    @Test
+    void submitScoreRejectsNullScoreType() {
+        loginAs(100L);
+        EvaluationTask task = task(10L, 100L, 0);
+        when(taskMapper.selectById(10L)).thenReturn(task);
+
+        assertThrows(BusinessException.class, () -> service.submitScore(dto(10L, null)));
+
+        verify(scoreMapper, never()).delete(any());
+        verify(scoreMapper, never()).insert(any());
+    }
+
+    @Test
+    void submitScoreRejectsUnsupportedScoreType() {
+        loginAs(100L);
+        EvaluationTask task = task(10L, 100L, 0);
+        when(taskMapper.selectById(10L)).thenReturn(task);
+
+        assertThrows(BusinessException.class, () -> service.submitScore(dto(10L, "OTHER")));
+
+        verify(scoreMapper, never()).delete(any());
+        verify(scoreMapper, never()).insert(any());
+    }
+
     private EvaluationScoreDTO dto(Long taskId, String scoreType) {
         EvaluationScoreDTO dto = new EvaluationScoreDTO();
         dto.setTaskId(taskId);

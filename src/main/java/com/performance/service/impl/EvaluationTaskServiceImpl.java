@@ -128,6 +128,12 @@ public class EvaluationTaskServiceImpl extends ServiceImpl<EvaluationTaskMapper,
         Long currentUserId = SecurityUtils.getCurrentUserId();
         String scoreType = dto.getScoreType();
 
+        if (scoreType == null || (!"SELF".equals(scoreType)
+                && !"MANAGER".equals(scoreType)
+                && !"PEER".equals(scoreType))) {
+            throw new BusinessException("Unsupported score type");
+        }
+
         // 校验评分权限
         if ("SELF".equals(scoreType)) {
             if (!task.getUserId().equals(currentUserId)) {
