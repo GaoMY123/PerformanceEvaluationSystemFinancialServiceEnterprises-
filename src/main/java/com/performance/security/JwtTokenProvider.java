@@ -2,6 +2,7 @@ package com.performance.security;
 
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
+import io.jsonwebtoken.security.SignatureException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -70,6 +71,8 @@ public class JwtTokenProvider {
             log.error("JWT Token格式错误");
         } catch (UnsupportedJwtException e) {
             log.error("不支持的JWT Token");
+        } catch (SignatureException e) {
+            log.error("JWT Token签名校验失败");
         } catch (IllegalArgumentException e) {
             log.error("JWT Token参数异常");
         }
