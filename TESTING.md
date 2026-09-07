@@ -14,7 +14,7 @@ required to run the tests.
 - Spring Security user loading rules for enabled/disabled/unknown accounts
 - Current-user helpers backed by Spring Security context
 - User registration, login, password reset and password update rules
-- Evaluation score authorization rules (self, manager and peer flows)
+- Evaluation score authorization rules and unsupported score type rejection
 - Weighted performance score calculation and final grade mapping
 - Salary adjustment generation rules by grade
 - Performance goal deletion and KPI binding rules
