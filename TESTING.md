@@ -12,8 +12,12 @@ required to run the tests.
 - JWT token generation, validation, expiry and tamper detection
 - Current-user helpers backed by Spring Security context
 - User registration, login, password reset and password update rules
+- Evaluation score authorization rules (self, manager and peer flows)
 - Weighted performance score calculation and final grade mapping
 - Salary adjustment generation rules by grade
+- Performance goal deletion and KPI binding rules
+- KPI indicator duplicate-name rules
+- Appeal submission and handling state rules
 - Authentication controller API responses and bean validation errors
 
 ## Commands
